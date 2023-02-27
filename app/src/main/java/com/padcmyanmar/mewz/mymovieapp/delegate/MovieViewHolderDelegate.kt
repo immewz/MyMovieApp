@@ -1,5 +1,5 @@
 package com.padcmyanmar.mewz.mymovieapp.delegate
 
 interface MovieViewHolderDelegate {
-    fun onTapMovie()
+    fun onTapMovie(movieId : Int)
 }

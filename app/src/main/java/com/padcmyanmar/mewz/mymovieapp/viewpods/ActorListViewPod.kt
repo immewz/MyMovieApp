@@ -3,12 +3,11 @@ package com.padcmyanmar.mewz.mymovieapp.viewpods
 import android.content.Context
 import android.graphics.Paint
 import android.util.AttributeSet
-import android.view.LayoutInflater
 import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.padcmyanmar.mewz.mymovieapp.adapters.ActorAdapter
-import com.padcmyanmar.mewz.mymovieapp.data.vos.MovieVO
+import com.padcmyanmar.mewz.mymovieapp.data.vos.ActorVO
 import com.padcmyanmar.mewz.mymovieapp.databinding.ViewPodActorListBinding
 
 class ActorListViewPod @JvmOverloads constructor(
@@ -16,16 +15,20 @@ class ActorListViewPod @JvmOverloads constructor(
 ) : RelativeLayout(context, attrs) {
 
     private lateinit var binding: ViewPodActorListBinding
-    lateinit var mActorAdapter: ActorAdapter
+    private lateinit var mActorAdapter: ActorAdapter
 
     override fun onFinishInflate() {
-//        setUpActorRecyclerView()
         super.onFinishInflate()
+        binding = ViewPodActorListBinding.bind(this)
     }
 
-//    fun setData(movieList: List<MovieVO>){
-//        mActorAdapter
-//    }
+    fun setUpActorListViewPod(){
+        setUpActorRecyclerView()
+    }
+
+    fun setData(actors: List<ActorVO>){
+        mActorAdapter.setNewData(actors)
+    }
 
     fun setUpActorViewPod(backgroundColorReference: Int, titleText: String, moreTitleText: String){
         setBackgroundColor(ContextCompat.getColor(context,backgroundColorReference))

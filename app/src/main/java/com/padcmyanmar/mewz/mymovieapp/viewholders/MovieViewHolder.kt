@@ -3,20 +3,21 @@ package com.padcmyanmar.mewz.mymovieapp.viewholders
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.padcmyanmar.mewz.mymovieapp.Utils.IMAGE_BASE_URL
+import com.padcmyanmar.mewz.mymovieapp.utils.IMAGE_BASE_URL
 import com.padcmyanmar.mewz.mymovieapp.data.vos.MovieVO
 import com.padcmyanmar.mewz.mymovieapp.databinding.ViewHolderMovieBinding
 import com.padcmyanmar.mewz.mymovieapp.delegate.MovieViewHolderDelegate
 
 class MovieViewHolder(itemView: View,private val mDelegate: MovieViewHolderDelegate) : RecyclerView.ViewHolder(itemView) {
 
-    private lateinit var binding: ViewHolderMovieBinding
+    private var binding: ViewHolderMovieBinding
     private var mMovieVO: MovieVO? = null
 
     init {
+        binding = ViewHolderMovieBinding.bind(itemView)
         itemView.setOnClickListener {
-            mMovieVO?.let {
-                mDelegate.onTapMovie()
+            mMovieVO?.let {movie ->
+                movie.id?.let { it -> mDelegate.onTapMovie(it) }
             }
         }
     }

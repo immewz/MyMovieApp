@@ -1,5 +1,7 @@
 package com.padcmyanmar.mewz.mymovieapp.network.dataagents
 
+import com.padcmyanmar.mewz.mymovieapp.data.vos.ActorVO
+import com.padcmyanmar.mewz.mymovieapp.data.vos.GenreVO
 import com.padcmyanmar.mewz.mymovieapp.data.vos.MovieVO
 
 interface MovieDataAgent {
@@ -18,4 +20,21 @@ interface MovieDataAgent {
         onSuccess: (List<MovieVO>) -> Unit,
         onFailure: (String) -> Unit
     )
+
+    fun getGenres(
+        onSuccess: (List<GenreVO>) -> Unit,
+        onFailure: (String) -> Unit
+    )
+
+    fun getMoviesByGenre(
+        genreId: String,
+        onSuccess: (List<MovieVO>) -> Unit,
+        onFailure: (String) -> Unit
+    )
+
+    fun getActors(
+        onSuccess: (List<ActorVO>) -> Unit,
+        onFailure: (String) -> Unit
+    )
+
 }

@@ -4,19 +4,15 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.padcmyanmar.mewz.mymovieapp.R
 import com.padcmyanmar.mewz.mymovieapp.databinding.ActivityMovieDetailBinding
-import com.padcmyanmar.mewz.mymovieapp.databinding.ViewHolderActorHolderBinding
 import com.padcmyanmar.mewz.mymovieapp.databinding.ViewPodActorListBinding
-import com.padcmyanmar.mewz.mymovieapp.databinding.ViewPodMovieListBinding
-import com.padcmyanmar.mewz.mymovieapp.viewpods.ActorListViewPod
 
 class MovieDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMovieDetailBinding
 
     companion object{
-        fun newIntent(context: Context) : Intent{
+        fun newIntent(context: Context, movieId: Int) : Intent{
             return  Intent(context,MovieDetailActivity::class.java)
         }
     }

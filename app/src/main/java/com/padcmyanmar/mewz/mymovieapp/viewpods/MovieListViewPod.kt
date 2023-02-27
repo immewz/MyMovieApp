@@ -2,13 +2,10 @@ package com.padcmyanmar.mewz.mymovieapp.viewpods
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.padcmyanmar.mewz.mymovieapp.R
 import com.padcmyanmar.mewz.mymovieapp.adapters.MovieAdapter
 import com.padcmyanmar.mewz.mymovieapp.data.vos.MovieVO
-import com.padcmyanmar.mewz.mymovieapp.databinding.ViewPodActorListBinding
 import com.padcmyanmar.mewz.mymovieapp.databinding.ViewPodMovieListBinding
 import com.padcmyanmar.mewz.mymovieapp.delegate.MovieViewHolderDelegate
 
@@ -21,15 +18,9 @@ class MovieListViewPod @JvmOverloads constructor(
 
     lateinit var mDelegate: MovieViewHolderDelegate
 
-
-    init {
-        binding = ViewPodMovieListBinding.inflate(LayoutInflater.from(context), this, true)
-    }
-
     override fun onFinishInflate() {
-
-        setUpMovieRecyclerView()
         super.onFinishInflate()
+        binding = ViewPodMovieListBinding.bind(this)
     }
 
     fun setUpMovieListViewPod(delegate: MovieViewHolderDelegate){

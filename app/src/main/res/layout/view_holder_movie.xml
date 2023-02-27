@@ -13,14 +13,14 @@
 
     <TextView
         android:id="@+id/tvMovieName"
-        android:layout_below="@id/ivMovieImage"
-        android:layout_marginTop="@dimen/margin_medium_2"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/width_movie_image"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_regular_2x"
+        android:layout_below="@id/ivMovieImage"
+        android:layout_marginTop="16dp"
         android:text="@string/lbl_movie_name_the_wolverine"
-        android:textStyle="bold"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_regular_2x"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvMovierating"
