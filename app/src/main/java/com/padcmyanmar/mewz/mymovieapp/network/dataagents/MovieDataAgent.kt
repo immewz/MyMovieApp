@@ -37,4 +37,16 @@ interface MovieDataAgent {
         onFailure: (String) -> Unit
     )
 
+    fun getMovieDetails(
+        movieId : String,
+        onSuccess: (MovieVO) -> Unit,
+        onFailure: (String) -> Unit
+    )
+
+    fun getCreditsByMovie(
+        movieId: String,
+        onSuccess: (Pair<List<ActorVO>, List<ActorVO>>) -> Unit,
+        onFailure: (String) -> Unit
+    )
+
 }

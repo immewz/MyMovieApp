@@ -1,11 +1,14 @@
 package com.padcmyanmar.mewz.mymovieapp.network
 
 import android.telecom.Call
+import com.padcmyanmar.mewz.mymovieapp.data.vos.MovieVO
 import com.padcmyanmar.mewz.mymovieapp.network.responses.GetActorsResponse
+import com.padcmyanmar.mewz.mymovieapp.network.responses.GetCreditsByMovieResponse
 import com.padcmyanmar.mewz.mymovieapp.network.responses.GetGenreResponse
 import com.padcmyanmar.mewz.mymovieapp.utils.*
 import com.padcmyanmar.mewz.mymovieapp.network.responses.MovieListResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface TheMovieApi {
@@ -44,5 +47,19 @@ interface TheMovieApi {
         @Query(PARAM_API_KEY) apiKey: String = MOVIE_API_KEY,
         @Query(PARAM_PAGE) page: Int = 1
     ) : retrofit2.Call<GetActorsResponse>
+
+    @GET("$API_GET_MOVIE_DETAILS/{movie_id}")
+    fun getMovieDetails(
+        @Path("movie_id") movieId: String?,
+        @Query(PARAM_API_KEY) apiKey: String = MOVIE_API_KEY,
+        @Query(PARAM_PAGE) page: Int = 1
+    ): retrofit2.Call<MovieVO>
+
+    @GET("$API_GET_CREDITS_BY_MOVIE/{movie_id}/credits")
+    fun getCreditsByMovie(
+        @Path("movie_id") movieId: String,
+        @Query(PARAM_API_KEY) apiKey: String = MOVIE_API_KEY,
+        @Query(PARAM_PAGE) page: Int = 1
+    ):retrofit2.Call<GetCreditsByMovieResponse>
 
 }
