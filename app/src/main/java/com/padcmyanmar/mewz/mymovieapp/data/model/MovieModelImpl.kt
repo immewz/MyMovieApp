@@ -41,7 +41,7 @@ object MovieModelImpl: MovieModel {
         onSuccess(mMovieDatabase?.movieDao()?.getMoviesByType(type = POPULAR) ?: listOf())
 
         // Network
-        mMovieDataAgent.getNowPlayingMovies(
+        mMovieDataAgent.getPopularMovies(
             onSuccess = {
                         it.forEach { movie -> movie.type = POPULAR }
                 mMovieDatabase?.movieDao()?.insertMovies(it)
@@ -57,7 +57,7 @@ object MovieModelImpl: MovieModel {
         onSuccess(mMovieDatabase?.movieDao()?.getMoviesByType(type = TOP_RATED) ?: listOf())
 
         // Network
-        mMovieDataAgent.getNowPlayingMovies(
+        mMovieDataAgent.getTopRatedMovies(
             onSuccess = {
                         it.forEach { movie -> movie.type = TOP_RATED }
                 mMovieDatabase?.movieDao()?.insertMovies(it)
@@ -90,9 +90,21 @@ object MovieModelImpl: MovieModel {
         onSuccess: (MovieVO) -> Unit,
         onFailure: (String) -> Unit
     ) {
+        // Database
+        val movieFromDatabase = mMovieDatabase?.movieDao()?.getMovieById(movieId = movieId.toInt())
+        movieFromDatabase?.let{
+            onSuccess(it)
+        }
+
         mMovieDataAgent.getMovieDetails(
             movieId = movieId,
-            onSuccess = onSuccess,
+            onSuccess = {
+                val movieFromDB =
+                    mMovieDatabase?.movieDao()?.getMovieById(movieId = movieId.toInt())
+                it.type = movieFromDB?.type
+                mMovieDatabase?.movieDao()?.insertSingleMovie(it)
+                onSuccess(it)
+            },
             onFailure = onFailure
         )
     }

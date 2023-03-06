@@ -14,7 +14,7 @@ class SpokenLanguageTypeConverter {
 
     @TypeConverter
     fun toSpokenLanguageVO(commentListJsonStr: String): List<SpokenLanguageVO>? {
-        val spokenLanguageVOType = object : TypeToken<SpokenLanguageVO?>() {}.type
+        val spokenLanguageVOType = object : TypeToken<List<SpokenLanguageVO?>>() {}.type
         return Gson().fromJson(commentListJsonStr, spokenLanguageVOType)
     }
 }

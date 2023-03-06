@@ -14,7 +14,7 @@ class ProductionCompanyTypeConverter {
 
     @TypeConverter
     fun toProductionCompaniesV0(commentListJsonStr: String): List<ProductionCompaniesVO>?{
-        val productionCompaniesVOType = object : TypeToken<ProductionCompaniesVO?>() {}.type
+        val productionCompaniesVOType = object : TypeToken<List<ProductionCompaniesVO>?>() {}.type
         return Gson().fromJson(commentListJsonStr, productionCompaniesVOType)
     }
 }

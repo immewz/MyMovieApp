@@ -27,7 +27,7 @@ data class MovieVO(
 
     @SerializedName("belongs_to_collection")
     @ColumnInfo(name = "belongs_to_collection")
-    val belongsToCollection: List<CollectionVO>?,
+    val belongsToCollection: CollectionVO?,
 
     @SerializedName("budget")
     @ColumnInfo(name = "budget")

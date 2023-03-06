@@ -13,7 +13,7 @@ class GenreListTypeConverter {
 
     @TypeConverter
     fun toGenreVo(commentListJsonStr: String): List<GenreVO>?{
-        val genreVOType = object : TypeToken<GenreVO?>() {}.type
+        val genreVOType = object : TypeToken<List<GenreVO?>>() {}.type
         return Gson().fromJson(commentListJsonStr, genreVOType)
     }
 }
